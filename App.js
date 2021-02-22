@@ -1,29 +1,26 @@
 import * as React from 'react';
-import {Appbar} from 'react-native-paper';
-import {StyleSheet} from 'react-native';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const MyComponent = () => (
-  <Appbar style={styles.bottom}>
-    <Appbar.Action
-      icon="archive"
-      onPress={() => console.log('Pressed archive')}
-    />
-    <Appbar.Action icon="mail" onPress={() => console.log('Pressed mail')} />
-    <Appbar.Action icon="label" onPress={() => console.log('Pressed label')} />
-    <Appbar.Action
-      icon="delete"
-      onPress={() => console.log('Pressed delete')}
-    />
-  </Appbar>
-);
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+    </View>
+  );
+}
 
-export default MyComponent;
+const Stack = createStackNavigator();
 
-const styles = StyleSheet.create({
-  bottom: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
-});
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default App;
